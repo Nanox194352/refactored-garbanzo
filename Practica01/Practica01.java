@@ -34,6 +34,23 @@ public class Practica01{
 		return result;
 	}
 
+	public static int[] remasteredFindAndLast(int[] n, int value){
+		int[] r = new int[2];
+		r[0] = -1;
+		r[1] = -1;
+
+		for(int i = 0; i < n.length; i++){
+			int j = n.length - 1 - i;
+
+			if(n[i] == value && r[0] == -1)
+				r[0] = i;
+			if(n[j] == value && r[1] == -1)
+				r[1] = j;
+		}
+
+		return r;
+	}
+
     /**
     * Verifica si un tablero de sudoku de 6x6 es válido, considerando
     * únicamente los casos de las verticales y las diagonales.
@@ -97,13 +114,22 @@ public class Practica01{
 		int[] ejemplo1c = {3,2,1,4,2};
 
 		int[] resultado1a = findFirstAndLast(ejemplo1a, 2);
-		System.out.println("["+resultado1a[0]+", "+resultado1a[1]+"]");
+		System.out.println("["+resultado1a[0]+", "+resultado1a[1]+"]" + "--- Método convencional");
+
+		int[] resultado1aa = remasteredFindAndLast(ejemplo1a, 2);
+		System.out.println("["+resultado1aa[0]+", "+resultado1aa[1]+"]" + "--- Método mejorado");
 
 		int[] resultado1b = findFirstAndLast(ejemplo1b, 15);
-		System.out.println("["+resultado1b[0]+", "+resultado1b[1]+"]");
+		System.out.println("["+resultado1b[0]+", "+resultado1b[1]+"]" + "--- Método convencional");
+
+		int[] resultado1bb = remasteredFindAndLast(ejemplo1b, 15);
+		System.out.println("["+resultado1bb[0]+", "+resultado1bb[1]+"]" + "--- Método mejorado");
 
 		int[] resultado1c = findFirstAndLast(ejemplo1c, 1);
-		System.out.println("["+resultado1c[0]+", "+resultado1c[1]+"]");
+		System.out.println("["+resultado1c[0]+", "+resultado1c[1]+"]" + " --- Método convencional");
+
+		int[] resultado1cc = remasteredFindAndLast(ejemplo1c, 1);
+		System.out.println("["+resultado1cc[0]+", "+resultado1cc[1]+"]" + " --- Método mejorado");
 
 
 
